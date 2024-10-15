@@ -1,0 +1,11 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "M33RPK5L34.com.jb.aurum",
+        "paths": ["/plaid-callback"]
+      }
+    ]
+  }
+}
