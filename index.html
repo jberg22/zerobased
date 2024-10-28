@@ -1,7 +1,234 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZeroBased - AI-Powered Financial Tracking</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(to bottom, #111827, #1f2937);
+            color: #fff;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 80px 0 64px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 span {
+            color: #3b82f6;
+        }
+
+        .hero p {
+            color: #9ca3af;
+            margin-bottom: 2rem;
+            font-size: 1.25rem;
+        }
+
+        .hero .subtitle {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Features Grid */
+        .features {
+            padding: 64px 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+
+        .feature-card {
+            background: rgba(31, 41, 55, 0.5);
+            padding: 2rem;
+            border-radius: 12px;
+            transition: transform 0.2s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            background: rgba(31, 41, 55, 0.8);
+        }
+
+        .feature-card i {
+            color: #3b82f6;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .feature-card p {
+            color: #9ca3af;
+        }
+
+        /* CTA Section */
+        .cta {
+            background: #2563eb;
+            padding: 4rem 2rem;
+            text-align: center;
+            border-radius: 16px;
+            margin: 2rem auto;
+            max-width: 1000px;
+        }
+
+        .cta h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta p {
+            color: #dbeafe;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Buttons */
+        .button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+            font-size: 1.125rem;
+        }
+
+        .button-primary {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .button-primary:hover {
+            background: #2563eb;
+        }
+
+        .button-secondary {
+            background: white;
+            color: #2563eb;
+        }
+
+        .button-secondary:hover {
+            background: #f3f4f6;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #9ca3af;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
 <body>
-  <h1>Welcome to ZeroBased</h1>
-  <p>This is a placeholder page.</p>
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Zero<span>Based</span></h1>
+            <h2 style="font-size: 2rem; color: #d1d5db; margin-bottom: 1.5rem;">Your AI-Powered Financial Co-Pilot</h2>
+            <p class="subtitle">Transform your financial journey with intelligent tracking, personalized insights, and automated budget management.</p>
+            <a href="#" class="button button-primary">Get Started</a>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i data-feather="brain"></i>
+                    <h3>AI-Powered Insights</h3>
+                    <p>Get personalized financial advice and spending patterns analysis powered by advanced AI.</p>
+                </div>
+                <div class="feature-card">
+                    <i data-feather="trending-up"></i>
+                    <h3>Smart Transaction Tracking</h3>
+                    <p>Automatically categorize and track your expenses with intelligent pattern recognition.</p>
+                </div>
+                <div class="feature-card">
+                    <i data-feather="pie-chart"></i>
+                    <h3>Dynamic Budgeting</h3>
+                    <p>Create and adjust budgets that adapt to your spending habits and financial goals.</p>
+                </div>
+                <div class="feature-card">
+                    <i data-feather="camera"></i>
+                    <h3>Receipt Scanning</h3>
+                    <p>Instantly capture and process receipts for accurate expense tracking.</p>
+                </div>
+                <div class="feature-card">
+                    <i data-feather="zap"></i>
+                    <h3>Smart Suggestions</h3>
+                    <p>Receive intelligent recommendations for saving money and optimizing spending.</p>
+                </div>
+                <div class="feature-card">
+                    <i data-feather="lock"></i>
+                    <h3>Bank-Grade Security</h3>
+                    <p>Your financial data is protected with enterprise-level encryption and security.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta">
+            <h2>Ready to Take Control of Your Finances?</h2>
+            <p>Join thousands of users who are already mastering their financial future with ZeroBased.</p>
+            <a href="#" class="button button-secondary">Start Your Free Trial</a>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>© 2024 ZeroBased. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Initialize Feather Icons
+        feather.replace();
+    </script>
 </body>
 </html>
