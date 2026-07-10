@@ -5,3 +5,10 @@ dist/
 
 # macOS
 .DS_Store
+
+# Local Netlify folder
+.netlify
+
+# #EDIT (07092026): netlify-cli internal Deno artifact
+deno.lock
+# #END
