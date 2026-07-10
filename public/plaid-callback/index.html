@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <title>ZeroBased — Finish connecting your bank</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #111827;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px;
+    }
+    .card { max-width: 420px; }
+    h1 { font-size: 1.5rem; margin: 0 0 0.75rem; }
+    p { color: #9ca3af; line-height: 1.6; margin: 0; }
+  </style>
+</head>
+<body>
+  <!--
+    Stage 0 (07082026): This page exists so the Plaid OAuth redirect_uri
+    (https://zerobased.us/plaid-callback) never 404s. On an iPhone with the
+    app installed, iOS intercepts the universal link before this page loads.
+    This fallback renders only when interception doesn't happen. It must NOT
+    attempt to handle the oauth_state_id query param — Plaid LinkKit owns
+    that flow inside the iOS app.
+  -->
+  <div class="card">
+    <h1>Almost done</h1>
+    <p>Return to the ZeroBased app on your iPhone to finish connecting your bank. You can close this window.</p>
+  </div>
+</body>
+</html>

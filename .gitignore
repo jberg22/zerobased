@@ -1,0 +1,7 @@
+# #EDIT (07082026): Stage 0 — web build artifacts
+node_modules/
+dist/
+# #END
+
+# macOS
+.DS_Store

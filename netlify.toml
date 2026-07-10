@@ -1,3 +1,15 @@
+# #EDIT (07082026): Stage 0 — Netlify now builds the Vite project and publishes
+# dist/ instead of the repo root. This [build] block overrides any build
+# settings configured in the Netlify UI. Netlify auto-installs npm dependencies
+# before running the command. Node 22 satisfies Vite 7's engine requirement.
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+# #END
+
 [[headers]]
   for = "/apple-app-site-association"
   [headers.values]
@@ -17,3 +29,13 @@
   to = "/apple-app-site-association"
   status = 200
   force = true
+
+# #EDIT (07082026): Stage 0 — SPA fallback for the web app at /app. Non-forced,
+# so any real file that exists is always served first; only unmatched paths
+# like /app/login fall through to the SPA entry. Must remain BELOW the forced
+# AASA rewrite — redirect rules match top-down, first match wins.
+[[redirects]]
+  from = "/app/*"
+  to = "/app/index.html"
+  status = 200
+# #END
