@@ -12,3 +12,11 @@ dist/
 # #EDIT (07092026): netlify-cli internal Deno artifact
 deno.lock
 # #END
+
+# #EDIT (07092026): Stage 1 — local env, service-account key, emulator logs
+.env.local
+serviceAccount.json
+firebase-debug.log
+firestore-debug.log
+ui-debug.log
+.firebase/

@@ -4,13 +4,20 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
+// #EDIT (07082026): Stage 1 — auth state provider wraps the app
+import { AuthProvider } from './lib/auth'
+// #END
 import './index.css'
 import App from './App'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter basename="/app">
-      <App />
+      {/* #EDIT (07082026): Stage 1 — AuthProvider wraps App */}
+      <AuthProvider>
+        <App />
+      </AuthProvider>
+      {/* #END */}
     </BrowserRouter>
   </StrictMode>,
 )

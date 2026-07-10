@@ -1,0 +1,163 @@
+// #EDIT (07082026): Stage 1 — EMULATOR COPY of the production Firestore rules.
+// The Firebase console is authoritative today; if you change rules in the
+// console, re-copy them here so the emulator keeps enforcing reality.
+// (Longer term: flip authority to this file via
+// `firebase deploy --only firestore:rules` so there is one source of truth.)
+// Content below is byte-for-byte the live rules as of 07082026.
+// #END
+rules_version = '2';
+service cloud.firestore {
+	match /databases/{database}/documents {
+    // #EDIT (06132026): App Check is NOT asserted in these rules by design.
+    // We tried adding an appCheckVerified() helper (request.app != null) to
+    // isAuthorizedUser, but every Firestore op then failed with
+    // PERMISSION_DENIED ("Missing or insufficient permissions") — request.app
+    // read as null even for App Check tokens that Firestore had already
+    // verified (App Check console showed ~89% verified, 0 unknown-origin).
+    // Reverted to auth-only. This is still secure: App Check enforcement is
+    // ENABLED for the Firestore API at the product level (Firebase console),
+    // which rejects tokenless requests at the gateway before these rules ever
+    // run. Verified via a tokenless curl returning 403 against these rules.
+    // Do NOT re-add a request.app check here unless product-level enforcement
+    // is intentionally turned off.
+    // #END
+
+    // Function to check if the user is authenticated and matches the userId
+    function isAuthorizedUser(userId) {
+      return request.auth != null && request.auth.uid == userId;
+    }
+    
+    // Updated validation - check required fields exist AND have correct types
+    // but don't reject writes that have additional fields
+    function hasRequiredTransactionFields(data) {
+      return data.keys().hasAll(['id', 'amount', 'description', 'date', 'category', 'type']) &&
+             data.id is string &&
+             data.amount is number &&
+             data.description is string &&
+             data.category is string &&
+             data.type is string;
+    }
+    
+    // Validation for account fields (matches Account struct)
+    function hasRequiredAccountFields(data) {
+      return data.keys().hasAll(['id', 'name', 'type', 'balance']) &&
+             data.id is string &&
+             data.name is string &&
+             data.type is string &&
+             data.balance is number;
+    }
+
+    match /users/{userId} {
+      allow read, write: if isAuthorizedUser(userId);
+      
+      // Devices collection for APNS registration
+      match /devices/{deviceId} {
+        allow read, write: if isAuthorizedUser(userId);
+      }
+      
+      // Settings collection
+      match /settings/{document=**} {
+        allow read, write: if isAuthorizedUser(userId);
+      }
+      
+            // #EDIT (06052026): Savings plan — single owner-only doc at savings/plan.
+      // App-controlled internal data with no Lambda co-owner, so no field
+      // validation (same posture as settings / reconciliation / balanceHistory).
+      // The {document=**} wildcard also covers a future savings/plan/months
+      // subcollection if snapshots ever get promoted out of the doc.
+      match /savings/{document=**} {
+        allow read, write, delete: if isAuthorizedUser(userId);
+      }
+
+      // Plaid accounts (kept for backward compatibility or separate use)
+      match /plaidAccounts/{accountId} {
+        allow read: if isAuthorizedUser(userId);
+        allow write: if isAuthorizedUser(userId) && 
+                      hasRequiredAccountFields(request.resource.data);
+        allow delete: if isAuthorizedUser(userId);
+        
+        match /metadata/{document=**} {
+          allow read, write, delete: if isAuthorizedUser(userId);
+        }
+        
+        match /transactions/{transactionId} {
+          allow read: if isAuthorizedUser(userId);
+          allow write: if isAuthorizedUser(userId) && 
+                        hasRequiredTransactionFields(request.resource.data);
+          allow delete: if isAuthorizedUser(userId);
+        }
+        
+        match /cursors/{cursorId} {
+          allow read, write: if isAuthorizedUser(userId);
+          allow delete: if isAuthorizedUser(userId);
+        }
+      }
+        
+      // Transaction rules
+      match /transactionRules/{ruleId} {
+        allow read, write: if isAuthorizedUser(userId);
+      }
+      
+			match /recurringTransactions/{recurringId} {
+        allow read, write: if isAuthorizedUser(userId);
+      }
+      
+      // #EDIT (06142026): Effective-dated budget timeline — Stage T2b. Sparse
+      // per-line budget change-points, one doc per (category|kind|YYYY-MM|scope).
+      // App-controlled internal data with no Lambda co-owner, so owner-only with no
+      // field validation — same posture as recurringTransactions / settings /
+      // savings. delete is allowed for the T5 edit UX (removing a change-point is a
+      // clean doc delete, the whole reason each point is its own document).
+      match /budgetTimeline/{changePointId} {
+        allow read, write, delete: if isAuthorizedUser(userId);
+      }
+      // #END
+      
+      // Unified accounts collection for both manual and Plaid-linked accounts
+      match /accounts/{accountId} {
+        allow read: if isAuthorizedUser(userId);
+        allow write: if isAuthorizedUser(userId) && 
+                      hasRequiredAccountFields(request.resource.data);
+        allow delete: if isAuthorizedUser(userId);
+
+        match /transactions/{transactionId} {
+          allow read: if isAuthorizedUser(userId);
+          allow write: if isAuthorizedUser(userId) && 
+                        hasRequiredTransactionFields(request.resource.data);
+          allow delete: if isAuthorizedUser(userId);
+        }
+        
+        // Added rule for metadata subcollection to allow saving sync cursors
+        match /metadata/{document=**} {
+          allow read, write, delete: if isAuthorizedUser(userId);
+        }
+        
+        // #EDIT (06012026): Reconciliation anchor (single "anchor" doc) +
+        // monthly balance history ("yyyy-MM" docs). App-controlled internal
+        // docs, owner-only, no field validation (same posture as metadata).
+        match /reconciliation/{document=**} {
+          allow read, write, delete: if isAuthorizedUser(userId);
+        }
+        match /balanceHistory/{document=**} {
+          allow read, write, delete: if isAuthorizedUser(userId);
+        }
+        // #END
+      }
+
+      // Optional: Keep manualAccounts if still used separately
+      match /manualAccounts/{accountId} {
+        allow read: if isAuthorizedUser(userId);
+        allow write: if isAuthorizedUser(userId) && 
+                      hasRequiredAccountFields(request.resource.data);
+        allow delete: if isAuthorizedUser(userId);
+
+        match /transactions/{transactionId} {
+          allow read: if isAuthorizedUser(userId);
+          allow write: if isAuthorizedUser(userId) && 
+                        hasRequiredTransactionFields(request.resource.data);
+          allow delete: if isAuthorizedUser(userId);
+        }
+      }
+    }
+  }
+}
