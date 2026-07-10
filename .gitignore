@@ -20,3 +20,6 @@ firebase-debug.log
 firestore-debug.log
 ui-debug.log
 .firebase/
+
+# #EDIT (07102026): Stage 1 — fixtures carry real (sandbox) account data; keep local
+fixtures/
