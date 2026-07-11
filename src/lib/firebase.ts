@@ -10,10 +10,13 @@
 //                              a token to the browser console — register it in
 //                              Firebase console → App Check → Apps → ⋮ →
 //                              Manage debug tokens. Production builds use the
-//                              real reCAPTCHA v3 provider.
+//                              real reCAPTCHA Enterprise provider.
 
 import { initializeApp } from 'firebase/app'
-import { initializeAppCheck, ReCaptchaV3Provider } from 'firebase/app-check'
+// #EDIT (07102026): Stage 1 — reCAPTCHA Enterprise provider (score-based site
+// key, no secret key). Matches the Enterprise key registered in App Check.
+import { initializeAppCheck, ReCaptchaEnterpriseProvider } from 'firebase/app-check'
+// #END
 import { connectAuthEmulator, getAuth } from 'firebase/auth'
 import { connectFirestoreEmulator, getFirestore } from 'firebase/firestore'
 
@@ -42,10 +45,12 @@ const app = initializeApp({
 if (!useEmulators) {
   const siteKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY
   if (siteKey) {
+// #EDIT (07102026): Stage 1 — Enterprise provider (was ReCaptchaV3Provider)
     initializeAppCheck(app, {
-      provider: new ReCaptchaV3Provider(siteKey),
+      provider: new ReCaptchaEnterpriseProvider(siteKey),
       isTokenAutoRefreshEnabled: true,
     })
+    // #END
   } else {
     console.warn(
       '[firebase] VITE_RECAPTCHA_SITE_KEY is empty — App Check not initialized. ' +
