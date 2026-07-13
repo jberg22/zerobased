@@ -1,15 +1,15 @@
-// #REMOVED (07082026): Stage 0 placeholder shell (Home stub + RouteProbe) —
-// per its own header comment it existed only to prove the build/routing
-// pipeline, and is fully replaced by the Stage 1 routing below. The
-// deep-link/SPA-fallback behavior it probed is unchanged: any unmatched URL
-// under /app now lands on /login (signed out) or Home (signed in), which is
-// the same end-to-end proof.
-// #EDIT (07082026): Stage 1 — real routes. /login is public; everything else
-// is wrapped in RequireAuth.
+// #REMOVED (07112026): Stage 1 Home placeholder page (the getCountFromServer
+// connection-check card). It served as the Stage 1 gate and is superseded by
+// the real Accounts/Transactions UI below. The file src/pages/Home.tsx can be
+// deleted from the repo.
+// #EDIT (07112026): Stage 2 — real authed routes inside the app shell.
 import { Route, Routes } from 'react-router-dom'
 import { RequireAuth } from './lib/auth'
-import Home from './pages/Home'
+import AppShell from './components/AppShell'
 import Login from './pages/Login'
+import Accounts from './pages/Accounts'
+import Transactions from './pages/Transactions'
+import TransactionDetail from './pages/TransactionDetail'
 
 export default function App() {
   return (
@@ -19,7 +19,14 @@ export default function App() {
         path="/*"
         element={
           <RequireAuth>
-            <Home />
+            <AppShell>
+              <Routes>
+                <Route path="/" element={<Accounts />} />
+                <Route path="/transactions" element={<Transactions />} />
+                <Route path="/transactions/:id" element={<TransactionDetail />} />
+                <Route path="*" element={<Accounts />} />
+              </Routes>
+            </AppShell>
           </RequireAuth>
         }
       />

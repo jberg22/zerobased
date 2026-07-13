@@ -1,3 +1,70 @@
-/* Stage 0 (07082026): Tailwind v4 — single import, no tailwind.config needed.
-   The @tailwindcss/vite plugin in vite.config.ts does the processing. */
+/* Stage 2 (07112026): Design system for the ZeroBased web app.
+   Direction: a precise financial instrument — quiet, dense where it counts,
+   trustworthy. NOT the AI-default cream/serif/terracotta or near-black/acid
+   looks. A restrained slate palette, one considered accent (a deep teal that
+   reads as "ledger ink" rather than a brand pop), and tabular-figure numerals
+   so money aligns like a real ledger. The signature is data density done well:
+   money right-aligned, tabular, income/expense distinguished by weight and a
+   muted hue shift rather than loud red/green. */
+
 @import "tailwindcss";
+
+@theme {
+  /* Slate surface ramp */
+  --color-surface-0: #0b0f14;
+  --color-surface-1: #111820;
+  --color-surface-2: #172230;
+  --color-surface-3: #1f2d3d;
+  --color-line: #223143;
+
+  /* Text ramp */
+  --color-ink-0: #f3f6f9;
+  --color-ink-1: #c2cedb;
+  --color-ink-2: #8394a6;
+  --color-ink-3: #5c6b7d;
+
+  /* Accent — deep teal, used with restraint */
+  --color-accent: #2dd4bf;
+  --color-accent-dim: #14b8a6;
+
+  /* Money semantics — muted, not stoplight */
+  --color-expense: #e2e8f0; /* neutral: expenses are the default, quiet */
+  --color-income: #5eead4;  /* income gets the accent-family lift */
+
+  --color-danger: #f0a3a3;
+
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+}
+
+/* Load faces: Inter for UI, IBM Plex Mono for figures/labels. Deliberate pair —
+   Inter's neutral clarity for chrome, Plex Mono's engineered feel for numbers
+   and metadata, which suits a financial ledger. */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-surface-0);
+  color: var(--color-ink-1);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Tabular figures everywhere numbers matter, so columns of money align. */
+.tnum {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum' 1;
+}
+
+/* Respect reduced-motion. */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

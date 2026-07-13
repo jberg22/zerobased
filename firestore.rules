@@ -3,7 +3,10 @@
 // console, re-copy them here so the emulator keeps enforcing reality.
 // (Longer term: flip authority to this file via
 // `firebase deploy --only firestore:rules` so there is one source of truth.)
-// Content below is byte-for-byte the live rules as of 07082026.
+// #EDIT (07112026): Stage 2d — REVERTED the Stage 2b/2c collection-group rule.
+// The web now uses per-account queries (Option A), matching the approach the
+// iOS windowed-sync work already validated for this schema. This file is once
+// again byte-identical to production — no cutover, no index, no rules deploy.
 // #END
 rules_version = '2';
 service cloud.firestore {
