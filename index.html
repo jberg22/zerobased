@@ -1,233 +1,471 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<!-- #EDIT (10242026): WS1 — full rewrite. Replaces the 2024 placeholder page ("AI-Powered Financial Co-Pilot"). -->
+<html lang="en" class="no-js">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZeroBased - AI-Powered Financial Tracking</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js"></script>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-        }
-
-        body {
-            background: linear-gradient(to bottom, #111827, #1f2937);
-            color: #fff;
-            line-height: 1.6;
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Hero Section */
-        .hero {
-            text-align: center;
-            padding: 80px 0 64px;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .hero h1 span {
-            color: #3b82f6;
-        }
-
-        .hero p {
-            color: #9ca3af;
-            margin-bottom: 2rem;
-            font-size: 1.25rem;
-        }
-
-        .hero .subtitle {
-            max-width: 600px;
-            margin: 0 auto 2rem;
-        }
-
-        /* Features Grid */
-        .features {
-            padding: 64px 0;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            padding: 2rem 0;
-        }
-
-        .feature-card {
-            background: rgba(31, 41, 55, 0.5);
-            padding: 2rem;
-            border-radius: 12px;
-            transition: transform 0.2s;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            background: rgba(31, 41, 55, 0.8);
-        }
-
-        .feature-card i {
-            color: #3b82f6;
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .feature-card h3 {
-            margin-bottom: 1rem;
-            font-size: 1.25rem;
-        }
-
-        .feature-card p {
-            color: #9ca3af;
-        }
-
-        /* CTA Section */
-        .cta {
-            background: #2563eb;
-            padding: 4rem 2rem;
-            text-align: center;
-            border-radius: 16px;
-            margin: 2rem auto;
-            max-width: 1000px;
-        }
-
-        .cta h2 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .cta p {
-            color: #dbeafe;
-            margin-bottom: 2rem;
-            max-width: 600px;
-            margin: 0 auto 2rem;
-        }
-
-        /* Buttons */
-        .button {
-            display: inline-block;
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            font-weight: bold;
-            text-decoration: none;
-            transition: all 0.2s;
-            border: none;
-            cursor: pointer;
-            font-size: 1.125rem;
-        }
-
-        .button-primary {
-            background: #3b82f6;
-            color: white;
-        }
-
-        .button-primary:hover {
-            background: #2563eb;
-        }
-
-        .button-secondary {
-            background: white;
-            color: #2563eb;
-        }
-
-        .button-secondary:hover {
-            background: #f3f4f6;
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 2rem 0;
-            color: #9ca3af;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .cta {
-                padding: 2rem 1rem;
-            }
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ZeroBased · Budgeting that keeps pace with your month</title>
+  <meta name="description" content="ZeroBased is a budgeting app for iPhone. It connects to your bank, sorts your transactions, and shows whether your spending is on track for the month. Made by ZeroBased LLC.">
+  <link rel="canonical" href="https://zerobased.org/">
+  <meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0b0b0c" media="(prefers-color-scheme: dark)">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ZeroBased">
+  <meta property="og:title" content="ZeroBased · Know where your month is headed">
+  <meta property="og:description" content="A budgeting app for iPhone that shows whether your spending is on track, ahead of pace, or over.">
+  <meta property="og:url" content="https://zerobased.org/">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/assets/site.css">
+  <script>document.documentElement.className = 'js';</script>
+  <script src="/assets/site.js" defer></script>
 </head>
 <body>
-    <div class="container">
-        <!-- Hero Section -->
-        <section class="hero">
-            <h1>Zero<span>Based</span></h1>
-            <h2 style="font-size: 2rem; color: #d1d5db; margin-bottom: 1.5rem;">Your AI-Powered Financial Co-Pilot</h2>
-            <p class="subtitle">Transform your financial journey with intelligent tracking, personalized insights, and automated budget management.</p>
-            <a href="#" class="button button-primary">Get Started</a>
-        </section>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-        <!-- Features Section -->
-        <section class="features">
-            <div class="features-grid">
-                <div class="feature-card">
-                    <i data-feather="brain"></i>
-                    <h3>AI-Powered Insights</h3>
-                    <p>Get personalized financial advice and spending patterns analysis powered by advanced AI.</p>
-                </div>
-                <div class="feature-card">
-                    <i data-feather="trending-up"></i>
-                    <h3>Smart Transaction Tracking</h3>
-                    <p>Automatically categorize and track your expenses with intelligent pattern recognition.</p>
-                </div>
-                <div class="feature-card">
-                    <i data-feather="pie-chart"></i>
-                    <h3>Dynamic Budgeting</h3>
-                    <p>Create and adjust budgets that adapt to your spending habits and financial goals.</p>
-                </div>
-                <div class="feature-card">
-                    <i data-feather="camera"></i>
-                    <h3>Receipt Scanning</h3>
-                    <p>Instantly capture and process receipts for accurate expense tracking.</p>
-                </div>
-                <div class="feature-card">
-                    <i data-feather="zap"></i>
-                    <h3>Smart Suggestions</h3>
-                    <p>Receive intelligent recommendations for saving money and optimizing spending.</p>
-                </div>
-                <div class="feature-card">
-                    <i data-feather="lock"></i>
-                    <h3>Enterprise-Grade Security</h3>
-                    <p>Your financial data is protected with enterprise-level encryption and security.</p>
-                </div>
+  <header class="site-header">
+    <nav class="wrap nav" aria-label="Main">
+      <a class="brand" href="/" aria-label="ZeroBased home">
+        <svg class="brand-mark" width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="8"/><circle class="ring" cx="14" cy="14" r="6.5" stroke-width="2.6"/><circle class="pip" cx="18.8" cy="9.2" r="2.5"/></svg>
+        <span>ZeroBased</span>
+      </a>
+      <div class="nav-links">
+        <a href="#pace">How pace works</a>
+        <a href="#features">Features</a>
+        <a href="#security">Security</a>
+        <a href="/support/">Support</a>
+      </div>
+      <div class="nav-end">
+        <a class="btn-pill" href="#notify">Get notified</a>
+        <details class="menu">
+          <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></summary>
+          <div class="menu-panel">
+            <a href="#pace">How pace works</a>
+            <a href="#features">Features</a>
+            <a href="#security">Security</a>
+            <a href="/support/">Support</a>
+          </div>
+        </details>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="wrap hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="chip"><span class="dot dot-accent"></span>Coming soon to iPhone</p>
+        <h1 id="hero-title">Know where your month is headed.</h1>
+        <p class="lede">ZeroBased connects to your bank, sorts every transaction, and compares what you've spent with where your budget says you should be today. On track, ahead of pace, or over: you'll know at a glance.</p>
+
+        <form id="notify" class="notify" name="notify" method="POST" action="/thanks/" data-netlify="true" netlify-honeypot="company">
+          <input type="hidden" name="form-name" value="notify">
+          <p class="hp"><label>Leave this field empty <input name="company" tabindex="-1" autocomplete="off"></label></p>
+          <label for="notify-email" class="sr-only">Email address</label>
+          <input id="notify-email" name="email" type="email" required autocomplete="email" placeholder="you@example.com">
+          <button class="btn-accent" type="submit">Notify me at launch</button>
+        </form>
+        <p class="notify-status" data-notify-status role="status" aria-live="polite"></p>
+
+        <p class="note">Want to look around first? The app opens with sample data. No account needed.</p>
+      </div>
+
+      <div class="hero-art">
+        <div class="phone" role="img" aria-label="The ZeroBased Summary screen: On track, $1,320 spent of a $2,400 budget, with a pace chart and budget bars.">
+          <div class="screen">
+            <div class="ph-head">
+              <div>
+                <div class="ph-month">October</div>
+                <div class="ph-title">Summary</div>
+              </div>
+              <div class="ph-avatar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></div>
             </div>
-        </section>
 
-        <!-- CTA Section -->
-        <section class="cta">
-            <h2>Ready to Take Control of Your Finances?</h2>
-            <a href="#" class="button button-secondary">Start Your Free Trial</a>
-        </section>
+            <div class="ph-hero">
+              <div class="ph-chip"><span class="dot"></span>On track</div>
+              <div class="ph-big">$1,320</div>
+              <div class="ph-sub">spent of $2,400 budget</div>
+            </div>
 
-        <!-- Footer -->
-        <footer>
-            <p>© 2024 ZeroBased. All rights reserved.</p>
-        </footer>
+            <svg class="ph-chart" viewBox="0 0 300 140" aria-hidden="true">
+              <line class="ln-budget" x1="0" y1="10" x2="300" y2="10"/>
+              <polyline class="ln-prior" points="0,130 60,113 120,90 180,63 240,40 300,24"/>
+              <line class="ln-pace" x1="0" y1="130" x2="300" y2="10"/>
+              <polygon class="spend-area" points="0,130 10,127.6 20,124 30,120.4 40,118 50,114.4 60,109.6 70,107.2 80,103.6 90,89.2 100,86.8 110,85.6 120,84.4 130,82 140,78.4 150,74.8 160,71.2 170,67.6 180,64 180,130"/>
+              <polyline class="spend-line" points="0,130 10,127.6 20,124 30,120.4 40,118 50,114.4 60,109.6 70,107.2 80,103.6 90,89.2 100,86.8 110,85.6 120,84.4 130,82 140,78.4 150,74.8 160,71.2 170,67.6 180,64"/>
+              <line class="ln-today" x1="180" y1="4" x2="180" y2="136"/>
+              <circle class="spend-dot" cx="180" cy="64" r="4.5"/>
+            </svg>
+
+            <div class="ph-tiles">
+              <div class="ph-tile"><span>Daily limit</span><strong>$90</strong></div>
+              <div class="ph-tile"><span>Avg / day</span><strong>$73</strong></div>
+              <div class="ph-tile"><span>Days left</span><strong>12</strong></div>
+            </div>
+
+            <div class="ph-card">
+              <div class="ph-card-head"><strong>Budgets</strong><span class="pace-key"><i></i>Today's pace</span></div>
+              <div class="brow">
+                <div class="brow-top"><span class="brow-name"><span class="swatch sw-groceries"></span>Groceries</span><span class="brow-amt">$260 left</span></div>
+                <div class="bar"><b style="width: 57%"></b><i style="left: 60%"></i></div>
+              </div>
+              <div class="brow">
+                <div class="brow-top"><span class="brow-name"><span class="swatch sw-dining"></span>Dining</span><span class="brow-amt">$105 left</span></div>
+                <div class="bar"><b class="warn" style="width: 70%"></b><i style="left: 60%"></i></div>
+              </div>
+              <div class="brow">
+                <div class="brow-top"><span class="brow-name"><span class="swatch sw-shopping"></span>Shopping</span><span class="brow-amt">$18 over</span></div>
+                <div class="bar"><b class="neg" style="width: 100%"></b><i style="left: 60%"></i></div>
+              </div>
+            </div>
+
+            <div class="tabbar">
+              <span class="on"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V5M4 19h16M8 15l4-4 3 3 5-6"/></svg>Summary</span>
+              <span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 4v8h8"/></svg>Budget</span>
+              <span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11M4.5 6h.01M4.5 12h.01M4.5 18h.01"/></svg>Transactions</span>
+              <span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10l9-6 9 6M5 10v8M9.5 10v8M14.5 10v8M19 10v8M3 20h18"/></svg>Accounts</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="highlights" aria-label="Highlights">
+      <ul>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10l9-6 9 6M5 10v8M9.5 10v8M14.5 10v8M19 10v8M3 20h18"/></svg>Bank connections through Plaid</li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>Read-only. It can't move money</li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Encrypted in transit and at rest</li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>Sign in with Apple or email</li>
+      </ul>
+    </section>
+
+    <section id="pace" class="wrap section first" aria-labelledby="pace-title">
+      <div class="section-head">
+        <p class="eyebrow">The core idea</p>
+        <h2 id="pace-title">Spending against the calendar, not just the total.</h2>
+        <p class="section-lede">$900 left means something different on the 5th than on the 25th. ZeroBased draws an even line from the first of the month to your budget and tracks your spending against it, so a big purchase early on shows up as a heads-up instead of a surprise at the end.</p>
+      </div>
+
+      <div class="pace-card" data-pace data-state="on">
+        <div class="pace-stats">
+          <p class="status-chip"><span class="dot"></span><span data-pace-status>On track</span></p>
+          <p class="pace-big" data-pace-spent>$1,320</p>
+          <p class="pace-sub">spent of $2,400 budget</p>
+          <div class="bar pace-bar"><b data-pace-fill style="width: 55%"></b><i data-pace-tick style="left: 60%"></i></div>
+          <p class="pace-left"><span data-pace-left>$1,080</span> left · <span data-pace-days-left>12</span> days left</p>
+          <div class="tiles2">
+            <div class="tile-stat"><span>Daily limit</span><strong data-pace-limit>$90</strong></div>
+            <div class="tile-stat"><span>Avg / day</span><strong data-pace-avg>$73</strong></div>
+          </div>
+        </div>
+
+        <div class="pace-chart-col">
+          <div class="chart-key" aria-hidden="true"><span><i class="k-pace"></i>Even pace</span><span><i class="k-spend"></i>Your spending</span><span class="chart-budget">Budget $2,400</span></div>
+          <svg class="pace-chart" viewBox="0 12 600 236" role="img" aria-label="Cumulative spending compared with an even pace line to the monthly budget">
+            <line class="ln-budget" x1="0" y1="22" x2="600" y2="22"/>
+            <line class="ln-pace" x1="0" y1="240" x2="600" y2="22"/>
+            <polygon class="spend-area" data-pace-area points="0,240 20,235.6 40,229.1 60,222.6 80,218.2 100,211.7 120,202.9 140,198.6 160,192.0 180,165.9 200,161.5 220,159.3 240,157.2 260,152.8 280,146.3 300,139.7 320,133.2 340,126.6 360,120.1 360,240"/>
+            <polyline class="spend-line" data-pace-line points="0,240 20,235.6 40,229.1 60,222.6 80,218.2 100,211.7 120,202.9 140,198.6 160,192.0 180,165.9 200,161.5 220,159.3 240,157.2 260,152.8 280,146.3 300,139.7 320,133.2 340,126.6 360,120.1"/>
+            <line class="ln-today" data-pace-today x1="360" y1="16" x2="360" y2="246"/>
+            <circle class="spend-dot" data-pace-dot cx="360" cy="120.1" r="6"/>
+            <line class="ln-axis" x1="0" y1="240.5" x2="600" y2="240.5"/>
+          </svg>
+          <div class="chart-axis" aria-hidden="true"><span>Day 1</span><span>Day 30</span></div>
+          <div class="slider-row">
+            <label for="pace-day" data-pace-day-label>Day 18 of 30</label>
+            <input id="pace-day" type="range" min="1" max="30" step="1" value="18">
+          </div>
+          <p class="slider-hint">Drag through a sample month. A big purchase on day 9 pushes it ahead of pace; steady days bring it back by day 12.</p>
+        </div>
+      </div>
+
+      <div class="legend">
+        <div><span class="dot dot-pos"></span><div><strong>On track</strong><p>Your spending is at or below where today's pace says it should be.</p></div></div>
+        <div><span class="dot dot-warn"></span><div><strong>Ahead of pace</strong><p>You're still under budget, but spending faster than the month is passing.</p></div></div>
+        <div><span class="dot dot-ring"></span><div><strong>Over budget</strong><p>You've passed the month's total. ZeroBased shows how far over you are and where you're on pace to land.</p></div></div>
+      </div>
+    </section>
+
+    <section id="features" class="wrap section" aria-labelledby="budgets-title">
+      <div class="section-head">
+        <p class="eyebrow">Budgeting</p>
+        <h2 id="budgets-title">Two ways to budget. Use the one that fits how you think.</h2>
+        <p class="section-lede">A guided setup builds your first budget from your recent spending, and you can run it again whenever things change.</p>
+      </div>
+
+      <div class="two-up">
+        <article class="card">
+          <div>
+            <h3>Category budget</h3>
+            <p class="card-copy">Give each category its own amount and watch each one's pace. Break a category into subcategories when you want more detail.</p>
+          </div>
+          <div class="panel" aria-hidden="true">
+            <div class="brow">
+              <div class="brow-top"><span class="brow-name"><span class="swatch sw-groceries"></span>Groceries</span><span class="brow-amt">$340 of $600</span></div>
+              <div class="bar"><b style="width: 57%"></b><i style="left: 60%"></i></div>
+            </div>
+            <div class="brow">
+              <div class="brow-top"><span class="brow-name"><span class="swatch sw-dining"></span>Dining</span><span class="brow-amt">$245 of $350</span></div>
+              <div class="bar"><b class="warn" style="width: 70%"></b><i style="left: 60%"></i></div>
+            </div>
+            <div class="brow">
+              <div class="brow-top"><span class="brow-name"><span class="swatch sw-shopping"></span>Shopping</span><span class="brow-amt">$318 of $300</span></div>
+              <div class="bar"><b class="neg" style="width: 100%"></b><i style="left: 60%"></i></div>
+            </div>
+            <div class="brow">
+              <div class="brow-top"><span class="brow-name"><span class="swatch sw-transport"></span>Transportation</span><span class="brow-amt">$96 of $220</span></div>
+              <div class="bar"><b style="width: 44%"></b><i style="left: 60%"></i></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div>
+            <h3>Fixed &amp; flex</h3>
+            <p class="card-copy">Separate the bills that don't change from the spending you control, and set aside for periodic costs that roll over month to month.</p>
+          </div>
+          <div class="panel" aria-hidden="true">
+            <div class="panel-total"><span>Left to budget</span><strong>$0.00</strong></div>
+            <div class="brow">
+              <div class="brow-top"><span class="brow-name">Fixed <span class="muted">· rent, insurance, phone</span></span><span class="brow-amt">$1,480 of $1,480</span></div>
+              <div class="bar"><b class="done" style="width: 100%"></b></div>
+            </div>
+            <div class="brow">
+              <div class="brow-top"><span class="brow-name">Flex <span class="muted">· groceries, dining, fun</span></span><span class="brow-amt">$520 of $900</span></div>
+              <div class="bar"><b style="width: 58%"></b><i style="left: 60%"></i></div>
+            </div>
+            <div class="brow">
+              <div class="brow-top"><span class="brow-name">Periodic <span class="tag">Rolls over</span></span><span class="brow-amt">$45 of $60</span></div>
+              <div class="bar"><b style="width: 75%"></b></div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="wrap section" aria-labelledby="more-title">
+      <div class="section-head">
+        <p class="eyebrow">Everything around it</p>
+        <h2 id="more-title">The rest of your money, kept up to date.</h2>
+        <p class="section-lede">Connect once and ZeroBased keeps up: new transactions, upcoming bills, where your income went, and what you're worth.</p>
+      </div>
+
+      <div class="tiles">
+        <article class="tile">
+          <div class="tile-ui" aria-hidden="true">
+            <div class="ui-head"><span>Today</span></div>
+            <div class="txn"><div class="txn-left"><span class="txn-icon bg-groceries"></span><div><div class="txn-name">Corner Market</div><div class="txn-cat">Groceries</div></div></div><span>−$64.18</span></div>
+            <div class="txn"><div class="txn-left"><span class="txn-icon bg-dining"></span><div><div class="txn-name">Noodle Bar</div><div class="txn-cat">Dining</div></div></div><span>−$31.40</span></div>
+            <div class="txn"><div class="txn-left"><span class="txn-icon bg-income"></span><div><div class="txn-name">Payroll</div><div class="txn-cat">Income</div></div></div><span class="amt-in">+$2,150.00</span></div>
+          </div>
+          <div>
+            <h3>Transactions arrive on their own</h3>
+            <p class="tile-copy">Link your banks and cards through Plaid. New transactions sync in the background and land already categorized.</p>
+          </div>
+        </article>
+
+        <article class="tile">
+          <div class="tile-ui rule" aria-hidden="true">
+            <div class="rule-row"><span class="rule-key">WHEN</span><div class="rule-chips"><span class="rchip">Description</span><span class="rchip muted">contains</span><span class="rchip"><strong>CORNER MKT #0412</strong></span></div></div>
+            <div class="rule-sep"></div>
+            <div class="rule-row"><span class="rule-key">THEN</span><div class="rule-chips"><span class="rchip">Rename to <strong>Corner Market</strong></span><span class="rchip"><span class="swatch sw-groceries"></span>Groceries</span></div></div>
+          </div>
+          <div>
+            <h3>Rules that remember your fixes</h3>
+            <p class="tile-copy">Set a rule once to rename a merchant or assign a category. Matching transactions follow it as they arrive.</p>
+          </div>
+        </article>
+
+        <article class="tile">
+          <div class="tile-ui" aria-hidden="true">
+            <div class="ui-head"><span>Coming up</span><span>$1,330.99 next 2 weeks</span></div>
+            <div class="up"><div class="up-date"><small>NOV</small><b>1</b></div><div class="up-main">Rent<span>Monthly · in 8 days</span></div><span>$1,250.00</span></div>
+            <div class="up"><div class="up-date"><small>NOV</small><b>3</b></div><div class="up-main">Internet<span>Monthly · in 10 days</span></div><span>$65.00</span></div>
+            <div class="up"><div class="up-date"><small>NOV</small><b>6</b></div><div class="up-main">Streaming<span>Monthly · in 13 days</span></div><span>$15.99</span></div>
+          </div>
+          <div>
+            <h3>Bills and subscriptions, ahead of time</h3>
+            <p class="tile-copy">Recurring charges are spotted for you and laid out in an upcoming list and a calendar, so nothing lands unannounced.</p>
+          </div>
+        </article>
+
+        <article class="tile">
+          <div class="tile-ui flow" aria-hidden="true">
+            <svg viewBox="0 0 320 176">
+              <path d="M8,6 C110,6 110,6 212,6 L212,56 C110,56 110,56 8,56 Z" style="fill: var(--c-transport); fill-opacity: 0.32"/>
+              <path d="M8,56 C110,56 110,60 212,60 L212,90 C110,90 110,86 8,86 Z" style="fill: var(--c-dining); fill-opacity: 0.32"/>
+              <path d="M8,86 C110,86 110,94 212,94 L212,114 C110,114 110,106 8,106 Z" style="fill: var(--c-shopping); fill-opacity: 0.32"/>
+              <path d="M8,106 C110,106 110,118 212,118 L212,130 C110,130 110,118 8,118 Z" style="fill: var(--c-groceries); fill-opacity: 0.32"/>
+              <path d="M8,118 C110,118 110,134 212,134 L212,162 C110,162 110,146 8,146 Z" style="fill: var(--pos); fill-opacity: 0.32"/>
+              <rect x="0" y="6" width="8" height="140" rx="2" style="fill: var(--inc)"/>
+              <rect x="212" y="6" width="8" height="50" rx="2" style="fill: var(--c-transport)"/>
+              <rect x="212" y="60" width="8" height="30" rx="2" style="fill: var(--c-dining)"/>
+              <rect x="212" y="94" width="8" height="20" rx="2" style="fill: var(--c-shopping)"/>
+              <rect x="212" y="118" width="8" height="12" rx="2" style="fill: var(--c-groceries)"/>
+              <rect x="212" y="134" width="8" height="28" rx="2" style="fill: var(--pos)"/>
+              <text x="228" y="35" style="fill: var(--fg); font-family: var(--font); font-size: 12px">Housing</text>
+              <text x="228" y="79" style="fill: var(--fg); font-family: var(--font); font-size: 12px">Food</text>
+              <text x="228" y="108" style="fill: var(--fg); font-family: var(--font); font-size: 12px">Shopping</text>
+              <text x="228" y="128" style="fill: var(--fg2); font-family: var(--font); font-size: 11px">Transport</text>
+              <text x="228" y="152" style="fill: var(--fg); font-family: var(--font); font-size: 12px">Saved</text>
+              <text x="14" y="172" style="fill: var(--fg3); font-family: var(--font); font-size: 11px">Income</text>
+            </svg>
+          </div>
+          <div>
+            <h3>See where every dollar went</h3>
+            <p class="tile-copy">A money-flow chart traces your income into each category, alongside reports on categories and spending trends.</p>
+          </div>
+        </article>
+
+        <article class="tile">
+          <div class="tile-ui nw" aria-hidden="true">
+            <div class="nw-top">
+              <div><div class="nw-label">Net worth</div><div class="nw-big">$48,210</div><div class="nw-delta">+$1,240 this month</div></div>
+              <svg width="110" height="46" viewBox="0 0 110 46"><polyline class="nw-spark" points="0,40 12,38 24,36 36,37 48,30 60,28 72,24 84,20 96,14 110,8"/></svg>
+            </div>
+            <div class="nw-tiles">
+              <div><span>Cash</span><strong>$12,480</strong></div>
+              <div><span>Owed</span><strong>−$2,310</strong></div>
+              <div><span>Invested</span><strong>$38,040</strong></div>
+            </div>
+          </div>
+          <div>
+            <h3>Every account in one place</h3>
+            <p class="tile-copy">Checking, cards and investments, grouped by bank, with cash, owed and invested totals and a net-worth trend.</p>
+          </div>
+        </article>
+
+        <article class="tile">
+          <div class="tile-ui chat" aria-hidden="true">
+            <div class="bubble me">How much have I spent on dining this month?</div>
+            <div class="bubble ai"><strong>$245 across 9 transactions.</strong> That's 70% of your $350 Dining budget with 12 days left, a little ahead of pace.</div>
+          </div>
+          <div>
+            <h3>Ask about your spending</h3>
+            <p class="tile-copy">Ask a question in plain language and get an answer drawn from your own transactions and budget.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="band">
+        <div class="band-copy">
+          <h3>Make it yours</h3>
+          <p>Light, Dark, Graphite and Lights Out themes, seven accent colors, and a monochrome mode for a calmer screen.</p>
+        </div>
+        <div class="band-art" aria-hidden="true">
+          <div class="themes">
+            <span style="background: #f2f2f7"></span>
+            <span style="background: #212121"></span>
+            <span style="background: #1c1c1e"></span>
+            <span style="background: #000000"></span>
+          </div>
+          <div class="accents">
+            <span style="background: #33cc66"></span>
+            <span style="background: #0a84ff"></span>
+            <span style="background: #ff453a"></span>
+            <span style="background: #bf5af2"></span>
+            <span style="background: #ff9f0a"></span>
+            <span style="background: #ff33cc"></span>
+            <span style="background: #ffd60a"></span>
+          </div>
+          <div class="seg"><span class="on">Colorful</span><span class="off">Monochrome</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap section" aria-labelledby="demo-title">
+      <div class="demo">
+        <div class="demo-copy">
+          <p class="eyebrow">Try it first</p>
+          <h2 id="demo-title">Look around before you sign up.</h2>
+          <p class="section-lede">Open ZeroBased and explore it with sample data. No account, no bank connection, nothing to cancel. When you're ready, create an account and start your free trial.</p>
+          <ul class="checks">
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Every screen, filled with sample money</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Build a practice budget with the guided setup</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Check whether your bank is supported</li>
+          </ul>
+        </div>
+        <div class="demo-art">
+          <div class="demo-screen" role="img" aria-label="The demo's Budget tab: a blurred sample budget with buttons to create your own budget or see the demo budget.">
+            <div class="demo-pin"><span>You're exploring a demo</span><strong>Create account</strong></div>
+            <div class="demo-blur">
+              <div class="ln"></div>
+              <div class="ln big"></div>
+              <div class="bar"><b style="width: 62%"></b></div>
+              <div class="bar"><b style="width: 40%; background: var(--c-dining)"></b></div>
+              <div class="bar"><b style="width: 78%; background: var(--c-groceries)"></b></div>
+              <div class="bar"><b style="width: 30%; background: var(--c-shopping)"></b></div>
+              <div class="bar"><b style="width: 52%; background: var(--c-transport)"></b></div>
+            </div>
+            <div class="demo-actions">
+              <span class="primary">Create your own budget</span>
+              <span class="secondary">See the demo budget</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="security" class="wrap section" aria-labelledby="security-title">
+      <div class="section-head">
+        <p class="eyebrow">Security &amp; privacy</p>
+        <h2 id="security-title">Private by design.</h2>
+        <p class="section-lede">Your financial data is personal. Here's how ZeroBased handles it.</p>
+      </div>
+      <div class="grid4">
+        <div class="feature">
+          <span class="icon-chip"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="15" r="4"/><path d="M10.8 12.2L20 3M16 7l3 3M14 9l2 2"/></svg></span>
+          <h3>Your bank login stays with your bank</h3>
+          <p>Accounts connect through Plaid. ZeroBased never sees or stores your bank username or password.</p>
+        </div>
+        <div class="feature">
+          <span class="icon-chip"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></span>
+          <h3>Read-only access</h3>
+          <p>ZeroBased can read balances and transactions. It can't move money or make payments.</p>
+        </div>
+        <div class="feature">
+          <span class="icon-chip"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span>
+          <h3>Encrypted in transit and at rest</h3>
+          <p>Data is encrypted between your phone and our servers, and while it's stored.</p>
+        </div>
+        <div class="feature">
+          <span class="icon-chip"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></span>
+          <h3>Yours to keep or delete</h3>
+          <p>We don't sell your data. Delete your account from the app anytime, and your data goes with it.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap faq" aria-labelledby="faq-title">
+      <h2 id="faq-title">Questions</h2>
+      <div class="faq-grid">
+        <div><h3>Which banks work with ZeroBased?</h3><p>Thousands of US banks, credit unions and card issuers connect through Plaid. You can search for yours from the app's demo before you sign up.</p></div>
+        <div><h3>Do I need to connect a bank to try it?</h3><p>No. The demo runs on sample data, so you can see how everything works first.</p></div>
+        <div><h3>Can ZeroBased move my money?</h3><p>No. Access is read-only. ZeroBased can see balances and transactions, but it can't make transfers or payments.</p></div>
+        <div><h3>How does the free trial work?</h3><p>Your trial starts when you subscribe after creating an account. If you don't cancel before it ends, your subscription begins and is billed through your Apple ID.</p></div>
+        <div><h3>Is ZeroBased on iPad or the web?</h3><p>We're starting with iPhone. Leave your email above to hear when more arrives.</p></div>
+        <div><h3>Who makes ZeroBased?</h3><p>ZeroBased is made by ZeroBased LLC, an independent company. Reach us anytime at <a href="mailto:support@zerobased.org">support@zerobased.org</a>.</p></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="foot">
+        <div class="foot-id">
+          <a class="brand" href="/" aria-label="ZeroBased home"><svg class="brand-mark" width="26" height="26" viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="8"/><circle class="ring" cx="14" cy="14" r="6.5" stroke-width="2.6"/><circle class="pip" cx="18.8" cy="9.2" r="2.5"/></svg><span>ZeroBased</span></a>
+          <p>ZeroBased LLC</p>
+          <a href="mailto:support@zerobased.org">support@zerobased.org</a>
+        </div>
+        <nav class="foot-cols" aria-label="Footer">
+          <div><strong>Product</strong><a href="#pace">How pace works</a><a href="#features">Features</a><a href="#security">Security</a></div>
+          <div><strong>Help</strong><a href="/support/">Support</a><a href="mailto:support@zerobased.org">Contact</a></div>
+          <div><strong>Legal</strong><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Use</a></div>
+        </nav>
+      </div>
+      <div class="foot-legal">
+        <span>© 2026 ZeroBased LLC. All rights reserved.</span>
+        <span>Apple, iPhone and App Store are trademarks of Apple Inc., registered in the U.S. and other countries. Bank connections provided by Plaid.</span>
+      </div>
     </div>
-
-    <script>
-        // Initialize Feather Icons
-        feather.replace();
-    </script>
+  </footer>
 </body>
 </html>
